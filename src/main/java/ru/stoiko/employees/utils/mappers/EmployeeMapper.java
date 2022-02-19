@@ -42,7 +42,8 @@ public class EmployeeMapper {
                 .fathername(employee.getFathername())
                 .surname(employee.getSurname())
                 .biography (employee.getBiography())
-                //.photo("data:image/jpeg;base64," + imgTransformationUtils.byteToBase64(cityEntity.getPhoto()))
+                .interests(employee.getInterests())
+                .positionName(employee.getPositionName())
                 .build();
     }
 }

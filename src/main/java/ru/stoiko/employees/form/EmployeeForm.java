@@ -42,6 +42,6 @@ public class EmployeeForm {
     /**
      * Фотография сотрудника
      */
-    private MultipartFile photo;
+    //private MultipartFile employeePhoto;
 }
 

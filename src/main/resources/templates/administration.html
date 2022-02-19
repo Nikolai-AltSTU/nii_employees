@@ -45,27 +45,27 @@
             <div class="row">
               <div class="col-md-4 mt-2">
                 <label for="surname">Фамилия:</label>
-                <input name="surname" class="form-control" id="surname" maxlength="50" placeholder="Введите фамилию">
+                <input name="surname" class="form-control" id="surname" maxlength="50" placeholder="Введите фамилию" th:field="*{surname}">
               </div>
               <div class="col-md-4 mt-2">
                 <label for="name">Имя:</label>
-                <input name="name" class="form-control" id="name" maxlength="50" placeholder="Введите имя" th:field="">
+                <input name="name" class="form-control" id="name" maxlength="50" placeholder="Введите имя" th:field="*{name}">
               </div>
               <div class="col-md-4 mt-2">
                 <label for="fathername">Отчество:</label>
-                <input name="fathername" class="form-control" id="fathername" maxlength="50" placeholder="Введите отчество">
+                <input name="fathername" class="form-control" id="fathername" maxlength="50" placeholder="Введите отчество" th:field="*{fathername}">
               </div>
             </div>
 
             <div class="col-md-12 mt-2">
               <label for="positionName">Должность:</label>
-              <input name="positionName" class="form-control" id="positionName" placeholder="Введите должность" maxlength="80">
+              <input name="positionName" class="form-control" id="positionName" placeholder="Введите должность" maxlength="80" th:field="*{positionName}">
             </div>
             <div class="col-md-12 mt-4">
               <div class="input-group  mt-2">
-                <input name="photo" type="file" class="form-control" id="photo">
+                <!--input name="photoEmployee" type="file" class="form-control" id="photoEmployee" accept="image/png, image/jpeg" >
                 <br>
-                <label class="input-group-text" for="photo">Загрузить фото</label>
+                <label class="input-group-text" for="photoEmployee">Загрузить фото</label-->
               </div>
             </div>
               
@@ -94,12 +94,12 @@
 
             <div class="mb-3 mt-4">
               <label for="biography" class="form-label">Краткая биография</label>
-              <textarea class="form-control" id="biography" rows="3"  maxlength="300" placeholder="Введите краткую биографию сотрудника"></textarea>
+              <textarea class="form-control" id="biography" rows="3"  maxlength="300" placeholder="Введите краткую биографию сотрудника" th:field="*{biography}"></textarea>
             </div>
 
             <div class="mb-3">
               <label for="interests" class="form-label">Интересы</label>
-              <textarea class="form-control" id="interests" maxlength="250" rows="3" placeholder="Введите интересы сотрудника"></textarea>
+              <textarea class="form-control" id="interests" maxlength="250" rows="3" placeholder="Введите интересы сотрудника" th:field="*{interests}"></textarea>
             </div>
 
             <div class="row p-3">

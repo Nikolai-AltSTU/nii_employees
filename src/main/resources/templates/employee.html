@@ -41,16 +41,16 @@
 
       <div class="container-md px-4">
 
-        <th:block th:each="employee1 : ${employeeList}">
+        <th:block th:each="employee : ${employeeList}" class="row p-4 gx-15 gy-5">
           <div class="row p-4 gx-15 gy-5">
 
             <div class="card" style="width: 24rem;">
               <img src="/images/employee1.jpg" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title" th:utext="${employee1.getName()}"></h5>
-                <p class="card-text" id="position">Старший научный сотрудник</p>
-                <p class="card-text" id="biography">Окончил Институт микробиологии. Работает в НИИ с 1973 года. </p>
-                <p class="card-text" id="interests">В свободное от работы время увлекается рисованием пейзажей.  </p>
+                <h5 class="card-title" th:utext="${employee.getSurname()} + ' ' + ${employee.getName()} + ' ' + ${employee.getFathername()}"></h5>
+                <p class="card-text" id="position" th:utext="${employee.getPositionName()}"></p>
+                <p class="card-text" id="biography" th:utext="${employee.getBiography()}"></p>
+                <p class="card-text" id="interests" th:utext="${employee.getInterests()}"></p>
               </div>
               <ul class="list-group list-group-flush">
                 <h5>Публикации</h5>

@@ -3,16 +3,10 @@ package ru.stoiko.employees.controllers.crud;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import ru.stoiko.employees.entity.Employee;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.services.crud.EmployeeService;
-
-import java.util.List;
 
 @Controller
 @Slf4j
@@ -38,12 +32,13 @@ public class EmployeeController {
      * Метод обработки запроса на добавление сотрудника
      * @param employeeForm
      * @return
-     *
+     */
     @PostMapping("/employee_add")
-    public String addEmployee(@ModelAttribute EmployeeForm employeeForm)
+    public String addEmployee(@ModelAttribute EmployeeForm employeeForm)//, @RequestParam("photoEmployee") MultipartFile photo)
     {
         log.info("[POST - /employees/add]\tEntered addEmployee method");
         try {
+            //employeeForm.setEmployeePhoto(photo);
             employeeService.save(employeeForm);
         }
         catch (Exception e) {

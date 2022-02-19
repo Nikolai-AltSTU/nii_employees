@@ -16,12 +16,12 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/employee")
+    /*@GetMapping("/employee")
     public String loadEmployeePage()
     {
         log.info("[GET - /employee]\tLoaded employee page");
         return "employee";
-    }
+    }*/
 
     @GetMapping("/publication")
     public String loadPublicationPage()

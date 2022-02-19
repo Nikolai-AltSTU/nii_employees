@@ -17,38 +17,6 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getFathername() {
-        return fathername;
-    }
-
-    public String getBiography() {
-        return biography;
-    }
-
-    public String getPositionName() {
-        return positionName;
-    }
-
-    public String getInterests() {
-        return interests;
-    }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public List<Publication> getPublication() {
-        return publication;
-    }
-
     /**
      * Фамилия
      */
@@ -63,25 +31,25 @@ public class Employee {
     /**
      * Отчество
      */
-    @Column(nullable = true, length = 50)
+    @Column(length = 50)
     private String fathername;
 
     /**
      * Краткая биография сотрудника
      */
-    @Column(nullable = false, length = 300)
+    @Column(length = 300)
     private String biography;
 
     /**
      * Наименование должности сотрудника
      */
-    @Column(nullable = false, length = 80)
+    @Column(length = 80)
     private String positionName;
 
     /**
      * Описание интересов сотрудника
      */
-    @Column(nullable = false, length = 300)
+    @Column(length = 300)
     private String interests;
 
     /**

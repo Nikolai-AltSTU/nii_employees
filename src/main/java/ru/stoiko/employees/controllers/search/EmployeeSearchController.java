@@ -19,8 +19,7 @@ public class EmployeeSearchController {
     @Autowired
     EmployeeSearchService employeeSearchService;
 
-
-    @GetMapping("/employees")
+    @GetMapping("/employee")
     public  String getAll(Model model)
     {
         log.info("[GET - /employees] \t EmployeeSearchController.getAll() entered");
