@@ -2,7 +2,9 @@ package ru.stoiko.employees;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import ru.stoiko.employees.form.EmployeeForm;
 
 @Controller
 @Slf4j
@@ -29,9 +31,10 @@ public class MainController {
     }
 
     @GetMapping("/administration")
-    public String loadAdministrationPage()
+    public String loadAdministrationPage(Model model)
     {
         log.info("[GET - /administration]\tLoaded administration page");
+        model.addAttribute("employeeForm", new EmployeeForm());
         return "administration";
     }
 
