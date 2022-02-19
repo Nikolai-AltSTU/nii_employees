@@ -1,0 +1,154 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <title>О сотрудниках</title>
+  </head>
+  <body>
+      <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <span class="fs-1 mb-3">О сотрудниках НИИ</span>
+          </a>
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link">Главная</a></li>
+            <li class="nav-item"><a href="employee" class="nav-link">Сотрудники</a></li>
+            <li class="nav-item"><a href="publication" class="nav-link">Публикации</a></li>
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Администрирование</a></li>
+          </ul>
+        </header>
+      </div>
+      <div class="b-example-divider"></div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+ 
+    <main>
+      <div class="mt-4 container bg-light">
+        <h3 class="display-7">Редактирование сотрудника</h3>
+        <div>
+          <form role="form" action="#" th:action="@{/employee_add}" th:object="${employeeForm}" method="post">
+            <div class="row">
+              <div class="col-md-4 mt-2">
+                <label for="surname">Фамилия:</label>
+                <input name="surname" class="form-control" id="surname" maxlength="50" placeholder="Введите фамилию">
+              </div>
+              <div class="col-md-4 mt-2">
+                <label for="name">Имя:</label>
+                <input name="name" class="form-control" id="name" maxlength="50" placeholder="Введите имя" th:field="*{}">
+              </div>
+              <div class="col-md-4 mt-2">
+                <label for="fathername">Отчество:</label>
+                <input name="fathername" class="form-control" id="fathername" maxlength="50" placeholder="Введите отчество">
+              </div>
+            </div>
+
+            <div class="col-md-12 mt-2">
+              <label for="positionName">Должность:</label>
+              <input name="positionName" class="form-control" id="positionName" placeholder="Введите должность" maxlength="80">
+            </div>
+            <div class="col-md-12 mt-4">
+              <div class="input-group  mt-2">
+                <input name="photo" type="file" class="form-control" id="photo">
+                <br>
+                <label class="input-group-text" for="photo">Загрузить фото</label>
+              </div>
+            </div>
+              
+
+            <div class="container bg-light mt-4">
+              <h4> Участие в публикациях</h4>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Интродукция горца забайкальского
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1" checked>
+                <label class="form-check-label" for="flexCheckChecked1">
+                  Анализ активности радионуклидов в биогеоцеозах
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" checked>
+                <label class="form-check-label" for="flexCheckChecked2">
+                  Чередование партеногенеза и раздельнополых генераций в размножении солоноводного рачка
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3 mt-4">
+              <label for="biography" class="form-label">Краткая биография</label>
+              <textarea class="form-control" id="biography" rows="3"  maxlength="300" placeholder="Введите краткую биографию сотрудника"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="interests" class="form-label">Интересы</label>
+              <textarea class="form-control" id="interests" maxlength="250" rows="3" placeholder="Введите интересы сотрудника"></textarea>
+            </div>
+
+            <div class="row p-3">
+              <button type="submit" class="btn btn-primary col-md-2" >Сохранить</button>
+              <div class="col-md-5"></div>
+              <button type="button" class="btn btn-secondary col-md-2">Отменить</button>
+              <div class="col-md-1"></div>
+              <button type="button" class="btn btn-danger col-md-2">Удалить</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+
+
+    <div class="mt-4 container bg-light" >
+        <h3 class="display-7">Редактирование публикации</h3>
+        <div class="container">
+          <form role="form">
+            <div class="row">
+              <div class="col-md-12 mt-2">
+                <label for="title">Название:</label>
+                <input name="title" class="form-control" id="title" placeholder="Введите название публикации" maxlength="50">
+              </div>
+            </div>
+
+            <div class=" mb-3 mt-2">
+              <label for="theAbstract" class="form-label">Аннотация</label>
+              <textarea class="form-control" id="theAbstract" placeholder="Введите аннотацию к публикации" maxlength="400" rows="3"></textarea>
+            </div>
+
+            <div class="row p-3">
+              <button type="button" class="btn btn-primary col-md-2">Сохранить</button>
+              <div class="col-md-5"></div>
+              <button type="button" class="btn btn-secondary col-md-2">Отменить</button>
+              <div class="col-md-1"></div>
+              <button type="button" class="btn btn-danger col-md-2">Удалить</button>
+            </div>
+
+
+          </form>
+
+        </div>
+    </div>
+
+    </main>
+
+
+    
+  </body>
+</html>
