@@ -1,7 +1,6 @@
 
 employee_update = document.getElementById("employee_update");
 
-
 function closeCrud(object)
 {
     object.style.display = "none";
@@ -16,9 +15,12 @@ function openCrud(object, ...attributes)
         inputs.forEach(function (item) {
             item.value = "";
         })
+
+        document.getElementById("deleteButton").href= "/employee_delete/" + attributes[0];
+        document.getElementById("update_form_action").action="/employee_update/" + attributes[0];
         for(let i = 0; i < inputs.length; i++)
         {
-            inputs[i].value = attributes[i];
+            inputs[i].value = attributes[i+1];
         }
     }
     else

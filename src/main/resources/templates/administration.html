@@ -39,7 +39,7 @@
  
     <main>
       <div class="mt-4 container bg-light">
-        <h3 class="display-7">Редактирование сотрудника</h3>
+        <h3 class="display-7">Создание записи о сотруднике</h3>
         <div>
           <form role="form" action="#" th:action="@{/employee_add}" th:object="${employeeForm}" method="post">
             <div class="row">
@@ -103,11 +103,8 @@
             </div>
 
             <div class="row p-3">
-              <button type="submit" class="btn btn-primary col-md-2" >Сохранить</button>
+              <button type="submit" class="btn btn-primary col-md-2" >Создать</button>
               <div class="col-md-5"></div>
-              <button type="button" class="btn btn-secondary col-md-2">Отменить</button>
-              <div class="col-md-1"></div>
-              <button type="button" class="btn btn-danger col-md-2">Удалить</button>
             </div>
 
           </form>

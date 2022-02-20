@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.services.crud.EmployeeService;
 
@@ -16,7 +15,7 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     /**
-     *
+     *  Метод удаления данных о сотруднике
      * @param id
      * @return
      */
@@ -25,7 +24,7 @@ public class EmployeeController {
     {
         log.info("[GET - /employee_delete/id{id}]\tEntered addEmployee method");
         employeeService.delete(id);
-        return "/employee"; // redirect:
+        return "redirect:/employee"; // redirect:
     }
 
     /**
@@ -45,16 +44,22 @@ public class EmployeeController {
             e.printStackTrace();
         }
         log.info("[POST - /employees/add]\tExit addEmployee method");
-        return "/employee"; // redirect:
+        return "redirect:/employee";
     }
 
+    /**
+     * Метод для обновления сведений о сотруднике
+     * @param id
+     * @param employeeForm
+     * @return
+     */
     @PostMapping("/employee_update/{id}")
     public String updateEmployee(@PathVariable Long id, @ModelAttribute EmployeeForm employeeForm)
     {
         log.info("[POST - /employee_update/{id}]\tExit updateEmployee method");
         employeeService.save(employeeForm);
         log.info("[POST - /employee_update/{id}]\tExit updateEmployee method");
-        return "/employee";  // redirect:
+        return "redirect:/employee";
     }
 
 }

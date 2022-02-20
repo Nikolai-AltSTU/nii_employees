@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.view.RedirectView;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.model.EmployeeModel;
 import ru.stoiko.employees.services.search.EmployeeSearchService;
@@ -32,14 +33,12 @@ public class EmployeeSearchController {
     }
 
     @GetMapping("/employees/{id}")
-    public  String getById(@PathVariable Long id, Model model)
+    public String getById(@PathVariable Long id, Model model)
     {
         log.info("[GET - /employees] \t EmployeeSearchController.getById() entered");
         model.addAttribute("employee", employeeSearchService.findById(id));
         model.addAttribute("employeeForm", new EmployeeForm());
         log.info("[GET - /employees] \t EmployeeSearchController.getById() executed");
-        return "employee"; // redirect:
+        return "employee"; // //new RedirectView("employee"); // redirect:
     }
-
-
 }
