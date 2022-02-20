@@ -20,12 +20,12 @@ public class EmployeeController {
      * @param id
      * @return
      */
-    @GetMapping("/employees_delete/{id}")
+    @GetMapping("/employee_delete/{id}")
     public String deleteEmployee(@PathVariable Long id)
     {
-        log.info("[GET - /employees_delete/{id}]\tEntered addEmployee method");
+        log.info("[GET - /employee_delete/id{id}]\tEntered addEmployee method");
         employeeService.delete(id);
-        return "redirect:/employee";
+        return "/employee"; // redirect:
     }
 
     /**
@@ -45,15 +45,16 @@ public class EmployeeController {
             e.printStackTrace();
         }
         log.info("[POST - /employees/add]\tExit addEmployee method");
-        return "redirect:/employee";
+        return "/employee"; // redirect:
     }
 
-    @PostMapping("/employees_update{id}")
+    @PostMapping("/employee_update/{id}")
     public String updateEmployee(@PathVariable Long id, @ModelAttribute EmployeeForm employeeForm)
     {
-        log.info("[POST - /employees/update{id}]\tExit updateEmployee method");
+        log.info("[POST - /employee_update/{id}]\tExit updateEmployee method");
         employeeService.save(employeeForm);
-        return "redirect:/employee";
+        log.info("[POST - /employee_update/{id}]\tExit updateEmployee method");
+        return "/employee";  // redirect:
     }
 
 }

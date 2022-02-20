@@ -26,6 +26,7 @@ public class EmployeeSearchController {
         List<EmployeeModel> employeeList = employeeSearchService.findAll();
         model.addAttribute("employeeList", employeeList);
         model.addAttribute("employeeForm", new EmployeeForm());
+        model.addAttribute("employee", new EmployeeModel());
         log.info("[GET - /employees] \t EmployeeSearchController.getAll() executed");
         return "employee";
     }
@@ -37,7 +38,7 @@ public class EmployeeSearchController {
         model.addAttribute("employee", employeeSearchService.findById(id));
         model.addAttribute("employeeForm", new EmployeeForm());
         log.info("[GET - /employees] \t EmployeeSearchController.getById() executed");
-        return "employee";
+        return "employee"; // redirect:
     }
 
 

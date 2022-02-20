@@ -31,25 +31,25 @@ public class Employee {
     /**
      * Отчество
      */
-    @Column(length = 50)
+    @Column(nullable = false, length = 50)
     private String fathername;
 
     /**
      * Краткая биография сотрудника
      */
-    @Column(length = 300)
+    @Column(nullable = false, length = 300)
     private String biography;
 
     /**
      * Наименование должности сотрудника
      */
-    @Column(length = 80)
+    @Column(nullable = false, length = 80)
     private String positionName;
 
     /**
      * Описание интересов сотрудника
      */
-    @Column(length = 300)
+    @Column(nullable = false, length = 300)
     private String interests;
 
     /**

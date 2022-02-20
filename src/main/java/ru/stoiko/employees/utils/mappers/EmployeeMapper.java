@@ -22,6 +22,8 @@ public class EmployeeMapper {
                 .fathername(employee.getFathername())
                 .surname(employee.getSurname())
                 .biography (employee.getBiography())
+                .interests(employee.getInterests())
+                .positionName(employee.getPositionName())
                 //.photo("data:image/jpeg;base64," + imgTransformationUtils.byteToBase64(cityEntity.getPhoto()))
                 .build();
     }
@@ -38,12 +40,12 @@ public class EmployeeMapper {
     public static Employee formToEntity(EmployeeForm employee) {
         return Employee.builder()
                 .id(employee.getId())
+                .surname(employee.getSurname())
                 .name(employee.getName())
                 .fathername(employee.getFathername())
-                .surname(employee.getSurname())
+                .positionName(employee.getPositionName())
                 .biography (employee.getBiography())
                 .interests(employee.getInterests())
-                .positionName(employee.getPositionName())
                 .build();
     }
 }

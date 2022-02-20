@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Builder
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 public class EmployeeModel {
 
