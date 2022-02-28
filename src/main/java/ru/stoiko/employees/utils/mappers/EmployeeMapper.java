@@ -15,7 +15,7 @@ public class EmployeeMapper {
      * @param employee
      * @return
      */
-    public static EmployeeModel entityToForm(Employee employee) {
+    public static EmployeeModel entityToModel(Employee employee) {
         return EmployeeModel.builder()
                 .id(employee.getId())
                 .name(employee.getName())
@@ -24,12 +24,11 @@ public class EmployeeMapper {
                 .biography (employee.getBiography())
                 .interests(employee.getInterests())
                 .positionName(employee.getPositionName())
-                //.photo("data:image/jpeg;base64," + imgTransformationUtils.byteToBase64(cityEntity.getPhoto()))
                 .build();
     }
 
-    public static List<EmployeeModel> entitiesToForms(List<Employee> employees) {
-        return employees.stream().map(EmployeeMapper::entityToForm).collect(Collectors.toList());
+    public static List<EmployeeModel> entitiesToModels(List<Employee> employees) {
+        return employees.stream().map(EmployeeMapper::entityToModel).collect(Collectors.toList());
     }
 
     /**

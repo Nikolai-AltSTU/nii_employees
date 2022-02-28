@@ -1,6 +1,7 @@
 package ru.stoiko.employees.services.crud;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.stoiko.employees.entity.Employee;
@@ -9,6 +10,7 @@ import ru.stoiko.employees.repository.EmployeeRepository;
 import ru.stoiko.employees.utils.mappers.EmployeeMapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -25,6 +27,28 @@ public class EmployeeService {
     {
         Employee employee = EmployeeMapper.formToEntity(employeeForm);
         return employeeRepository.save(employee);
+    }
+    public Employee save(Employee employee)
+    {
+        return employeeRepository.save(employee);
+    }
+
+    public  Employee update(Employee employee) throws Exception {
+        Optional<Employee> employeeOptional = employeeRepository.findById(employee.getId());
+
+        if (employeeOptional.isPresent()) {
+            Employee employeeNew = employeeOptional.get();
+            employeeNew.setSurname(employee.getSurname());
+            employeeNew.setName(employee.getName());
+            employeeNew.setFathername(employee.getFathername());
+            employeeNew.setBiography(employee.getBiography());
+            employeeNew.setInterests(employee.getInterests());
+            employeeNew.setPositionName(employee.getPositionName());
+            employeeRepository.save(employeeNew);
+            return employeeNew;
+        }
+        else
+            throw new Exception("Employee[id = " + employee.getId() + "] could not find in repository");
     }
 
     public void delete(Long id) {

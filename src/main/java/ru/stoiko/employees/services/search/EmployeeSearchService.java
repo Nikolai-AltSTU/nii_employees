@@ -24,13 +24,13 @@ public class EmployeeSearchService {
     public List<EmployeeModel> findAll() {
         log.info("[EmployeeSearchService]\tEntered findAll method");
         List<Employee> employeeList = employeeRepository.findAll(Sort.by("surname"));
-        return EmployeeMapper.entitiesToForms(employeeList);
+        return EmployeeMapper.entitiesToModels(employeeList);
     }
 
     @Transactional(readOnly = true)
     public EmployeeModel findById(Long id) {
         log.info("[EmployeeSearchService]\tEntered findById method");
         Optional<Employee> employee = employeeRepository.findById(id);
-        return employee.map(EmployeeMapper::entityToForm).orElse(null);
+        return employee.map(EmployeeMapper::entityToModel).orElse(null);
     }
 }

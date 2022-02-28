@@ -1,7 +1,6 @@
 package ru.stoiko.employees.form;
 
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -39,9 +38,5 @@ public class EmployeeForm {
      */
     private String interests;
 
-    /**
-     * Фотография сотрудника
-     */
-    //private MultipartFile employeePhoto;
 }
 
