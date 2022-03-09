@@ -10,4 +10,10 @@ import ru.stoiko.employees.entity.Publication;
  */
 @Repository
 public interface PublicationRepository extends JpaRepository<Publication, Long> {
+    /**
+     *
+     * @param title
+     * @return Publication
+     */
+    Publication findByTitle(String title);
 }

@@ -6,12 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.model.EmployeeModel;
 import ru.stoiko.employees.services.search.EmployeeSearchService;
 
 import java.util.List;
+
 
 @Controller
 @Slf4j

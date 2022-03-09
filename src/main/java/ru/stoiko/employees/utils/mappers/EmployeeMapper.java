@@ -5,6 +5,7 @@ import ru.stoiko.employees.entity.Employee;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.model.EmployeeModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,5 +47,11 @@ public class EmployeeMapper {
                 .biography (employee.getBiography())
                 .interests(employee.getInterests())
                 .build();
+    }
+
+    public static List<Employee> formToEntity(List<EmployeeForm> employees) {
+        if(employees == null)
+            employees = new ArrayList<EmployeeForm>();
+        return employees.stream().map(EmployeeMapper::formToEntity).collect(Collectors.toList());
     }
 }

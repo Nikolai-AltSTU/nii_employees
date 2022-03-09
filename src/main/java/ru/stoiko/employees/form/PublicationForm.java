@@ -15,5 +15,5 @@ public class PublicationForm {
 
     private String theAbstract;
 
-    List<EmployeeForm> employees;
+    //private List<EmployeeForm> employees;
 }

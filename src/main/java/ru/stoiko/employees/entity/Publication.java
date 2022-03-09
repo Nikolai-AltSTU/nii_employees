@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 @Table(name = "publication")
 public class Publication {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -24,6 +23,7 @@ public class Publication {
     private String theAbstract;
 
     @ManyToMany
-    @JoinColumn(nullable = false)
+    @JoinColumn()
     List<Employee> employees;
 }
+

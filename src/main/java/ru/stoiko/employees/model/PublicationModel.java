@@ -7,10 +7,11 @@ import java.util.List;
 @Builder
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 public class PublicationModel {
     private Long id;
     private String title;
     private String theAbstract;
-    List<EmployeeModel> employees;
+    private List<EmployeeModel> employees;
 }
