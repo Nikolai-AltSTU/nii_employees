@@ -4,8 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.services.crud.EmployeeService;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Optional;
 
 @Controller
 @Slf4j
@@ -33,11 +38,12 @@ public class EmployeeController {
      * @return
      */
     @PostMapping("/employee_add")
-    public String addEmployee(@ModelAttribute EmployeeForm employeeForm)//, @RequestParam("photoEmployee") MultipartFile photo)
+    public String addEmployee(@ModelAttribute EmployeeForm employeeForm, @RequestParam("photoEmployee") Optional<MultipartFile> photo)
     {
         log.info("[POST - /employees/add]\tEntered addEmployee method");
         try {
-            //employeeForm.setEmployeePhoto(photo);
+            if(photo.isPresent() && photo.get().getSize() > 0)
+                employeeForm.setPhoto(photo.get());
             employeeService.save(employeeForm);
         }
         catch (Exception e) {
@@ -49,17 +55,27 @@ public class EmployeeController {
 
     /**
      * Метод для обновления сведений о сотруднике
-     * @param id
+     * @param photo
      * @param employeeForm
      * @return
      */
-    @PostMapping("/employee_update/{id}")
-    public String updateEmployee(@PathVariable Long id, @ModelAttribute EmployeeForm employeeForm)
+    @PostMapping("/employee_update/")
+    public String updateEmployeeWithPhoto(@RequestParam("photoEmployee") Optional<MultipartFile> photo, @ModelAttribute EmployeeForm employeeForm)
     {
         log.info("[POST - /employee_update/{id}]\tExit updateEmployee method");
-        employeeService.save(employeeForm);
+        if(photo.isEmpty() || photo.get().getSize() == 0)
+            employeeService.save(employeeForm);
+        else {
+            try {
+                employeeForm.setPhoto(photo.get());
+                employeeService.save(employeeForm);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         log.info("[POST - /employee_update/{id}]\tExit updateEmployee method");
         return "redirect:/employee";
     }
+
 
 }

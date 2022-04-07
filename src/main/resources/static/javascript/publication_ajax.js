@@ -1,12 +1,62 @@
 console.log("publication page");
 
+publication_update_modal = document.getElementById("publication_update_modal");
+
+cancelButton = document.getElementById("cancelButton");
+cancelButton.onclick = function (){
+    publication_update_modal.style.display = "none";
+};
+
+function openCrud(object, ...attributes)
+{
+    console.log('begin open');
+    console.log(attributes[0]);
+    let inputs = object.querySelectorAll("input[type='text'], textarea, input[type='file'] , input[type='date']");
+    if(attributes.length > 0)
+    {
+        console.log(inputs);
+        document.getElementById("edit_publication").action="/publication_update/" + attributes[0]['id'];
+        inputs[0].value = attributes[0]["title"];
+        inputs[1].value = attributes[0]["theAbstract"];
+
+        let $editPublication = $("#edit_publication");
+        //Отправка формы обновления города
+        $editPublication.on('submit', function (e) {
+            console.log("$editPublication entered");
+            e.preventDefault();
+            let formData = new FormData(this);
+            console.log(formData);
+
+            $.ajax({
+                type: 'POST',
+                url: $editPublication.attr('action'),
+                enctype: "multipart/form-data",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data, textStatus, xhr) {
+                    location.reload();
+                },
+            });
+        });
+    }
+    else
+    {
+        inputs.forEach(function (item) {
+            item.value = "";
+        })
+    }
+    object.style.display = "block";
+    console.log('end open');
+}
+
 $(document).ready(function () {
 
-    //Форма добавления города
+    //Форма добавления публикации
     let $editPublicationForm = $("#edit_publication");
     let $publicationUpdateModal = $("#publication_update_modal");
 
-    //Отобразить город
+    //Отобразить публикацию
     function showPublication(publication) {
         let $newPublication = $(
             '<div class="accordion-item">' +
@@ -17,7 +67,9 @@ $(document).ready(function () {
             '<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">' +
             '<div class="accordion-body">' +
             '</div>' +
-            '<button type="button" class="btn btn-warning col-md-6 delete_publication">Удалить</button>' +
+            '<div class="row p-3">' +
+            '<button type="button" class="btn btn-warning col-md-3 update_publication_button">Редактировать</button>' +
+            '<button type="button" class="btn btn-danger col-md-3 delete_publication">Удалить</button>' +
             '</div>' +
             '</div>'
         )
@@ -48,6 +100,7 @@ $(document).ready(function () {
         },
     });
 
+    // установим события при нажатии на кнопки
     $(document).on('click', '.delete_publication', function () {
         let id = $(this).attr("id");
         $.ajax({
@@ -55,6 +108,19 @@ $(document).ready(function () {
             url: "/publication_delete/" + id,
             success: function () {
                 location.reload();
+            }
+        });
+    });
+
+    $(document).on('click', '.update_publication_button', function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            type: 'GET',
+            url: "/publications/find/" + id,
+            success: function (data, textStatus, xhr) {
+                console.log("data");
+                console.log(data);
+                openCrud(publication_update_modal, data)
             }
         });
     });

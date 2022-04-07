@@ -1,6 +1,9 @@
 package ru.stoiko.employees.form;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -38,5 +41,19 @@ public class EmployeeForm {
      */
     private String interests;
 
+
+    /**
+     * Путь к фото
+     */
+    private String photoPath;
+
+    /**
+     * Фотография сотрудника
+     */
+    private Optional<MultipartFile> photo;
+
+    public void setPhoto(MultipartFile multipartFile) {
+        photo = Optional.ofNullable(multipartFile);
+    }
 }
 

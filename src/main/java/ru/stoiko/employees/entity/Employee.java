@@ -37,8 +37,8 @@ public class Employee {
     /**
      * Краткая биография сотрудника
      */
-    @Column(nullable = false, length = 300)
-    private String biography;
+    @Column(length = 300)
+    private String biography = "";
 
     /**
      * Наименование должности сотрудника
@@ -49,8 +49,8 @@ public class Employee {
     /**
      * Описание интересов сотрудника
      */
-    @Column(nullable = false, length = 300)
-    private String interests;
+    @Column(length = 300)
+    private String interests = "";
 
     /**
      * Фотография сотрудника
@@ -59,6 +59,7 @@ public class Employee {
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] photo;
+    private String photoPath = "images/employee0.jpg";
 
     /**
      * Список публикаций сотрудника

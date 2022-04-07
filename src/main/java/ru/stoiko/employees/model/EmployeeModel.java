@@ -45,5 +45,6 @@ public class EmployeeModel {
     /**
      * Фотография сотрудника
      */
-    private String photo;
+    private String photoPath;
+
 }

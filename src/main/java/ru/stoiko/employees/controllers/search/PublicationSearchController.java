@@ -68,6 +68,22 @@ public class PublicationSearchController {
     }
 
     @ResponseBody
+    @GetMapping("/publications/find/{id}")
+    public ResponseEntity<?> getById(@PathVariable Long id)
+    {
+        try{
+            PublicationModel publicationModel = publicationSearchService.findById(id);
+            log.info("[GET - /publications/find] \t PublicationSearchController.getById() entered");
+            return ResponseEntity.ok(publicationModel);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @ResponseBody
     @GetMapping("/publications/findAll")
     public ResponseEntity<?> getAll()
     {

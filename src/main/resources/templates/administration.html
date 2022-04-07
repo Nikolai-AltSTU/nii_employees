@@ -20,7 +20,7 @@
           <ul class="nav nav-pills">
             <li class="nav-item"><a href="/" class="nav-link">Главная</a></li>
             <li class="nav-item"><a href="employee" class="nav-link">Сотрудники</a></li>
-            <li class="nav-item"><a href="publication" class="nav-link">Публикации</a></li>
+            <li class="nav-item"><a href="publications" class="nav-link">Публикации</a></li>
             <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Администрирование</a></li>
           </ul>
         </header>
@@ -42,7 +42,8 @@
       <div class="mt-4 container bg-light">
         <h3 class="display-7">Создание записи о сотруднике</h3>
         <div>
-          <form role="form" action="#" th:action="@{/employee_add}" th:object="${employeeForm}" method="post">
+          <form role="form" action="#" th:action="@{/employee_add}" th:object="${employeeForm}" method="post"
+            id="add_employee_form">
             <div class="row">
               <div class="col-md-4 mt-2">
                 <label for="surname">Фамилия:</label>
@@ -64,9 +65,10 @@
             </div>
             <div class="col-md-12 mt-4">
               <div class="input-group  mt-2">
-                <!--input name="photoEmployee" type="file" class="form-control" id="photoEmployee" accept="image/png, image/jpeg" >
+                <input name="photoEmployee" type="file" class="form-control" id="photoEmployee"
+                       accept="image/png, image/jpeg">
                 <br>
-                <label class="input-group-text" for="photoEmployee">Загрузить фото</label-->
+                <label class="input-group-text" for="photoEmployee">Загрузить фото</label>
               </div>
             </div>
               
@@ -105,7 +107,8 @@
 
             <div class="row p-3">
               <button type="submit" class="btn btn-primary col-md-2" >Создать</button>
-              <div class="col-md-5"></div>
+              <div class="col-md-8"></div>
+              <button type="reset" class="btn btn-secondary col-md-2" >Сбросить</button>
             </div>
 
           </form>
@@ -133,7 +136,8 @@
 
             <div class="row p-3">
               <button class="btn btn-primary col-md-2" type="submit">Создать</button>
-              <div class="col-md-5"></div>
+              <div class="col-md-8"></div>
+              <button type="reset" class="btn btn-secondary col-md-2" >Сбросить</button>
             </div>
 
           </form>

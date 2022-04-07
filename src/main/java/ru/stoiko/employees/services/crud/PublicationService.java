@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.stoiko.employees.entity.Publication;
-import ru.stoiko.employees.entity.Publication;
-import ru.stoiko.employees.form.PublicationForm;
 import ru.stoiko.employees.form.PublicationForm;
 import ru.stoiko.employees.repository.PublicationRepository;
 import ru.stoiko.employees.utils.mappers.PublicationMapper;

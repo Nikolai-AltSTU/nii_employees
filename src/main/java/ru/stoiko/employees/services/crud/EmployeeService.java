@@ -1,5 +1,6 @@
 package ru.stoiko.employees.services.crud;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Sort;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class EmployeeService {
 
     @Autowired
@@ -25,9 +27,18 @@ public class EmployeeService {
 
     public Employee save(EmployeeForm employeeForm)
     {
-        Employee employee = EmployeeMapper.formToEntity(employeeForm);
-        return employeeRepository.save(employee);
+        Employee employee;
+        try {
+            employee = EmployeeMapper.formToEntity(employeeForm);
+
+            return employeeRepository.save(employee);
+        }
+        catch (Exception exception){
+            log.error(exception.toString());
+        }
+        return null;
     }
+
     public Employee save(Employee employee)
     {
         return employeeRepository.save(employee);

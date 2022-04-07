@@ -30,7 +30,7 @@ public class PublicationController {
     {
         log.info("[GET - /publication_delete/id{id}]\tEntered addEmployee method");
         publicationService.delete(id);
-        return "redirect:/publication"; // redirect:
+        return "redirect:/publications"; // redirect:
     }
 
     /**
@@ -49,7 +49,7 @@ public class PublicationController {
             e.printStackTrace();
         }
         log.info("[POST - /publications/add]\tExit addEmployee method");
-        return "redirect:/publication";
+        return "redirect:/publications";
     }
 
     /**
@@ -64,7 +64,6 @@ public class PublicationController {
         log.info("[POST - /publication_update/{id}]\tExit updateEmployee method");
         publicationService.save(publicationForm);
         log.info("[POST - /publication_update/{id}]\tExit updateEmployee method");
-        return "redirect:/publication";
+        return "redirect:/publications";
     }
-
 }
