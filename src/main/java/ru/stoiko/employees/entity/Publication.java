@@ -22,8 +22,8 @@ public class Publication {
     @Column(length = 400)
     private String theAbstract;
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinColumn()
-    List<Employee> employees;
+    List<Employee> employees;*/
 }
 

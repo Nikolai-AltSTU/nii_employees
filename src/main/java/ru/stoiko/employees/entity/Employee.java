@@ -63,9 +63,9 @@ public class Employee {
 
     /**
      * Список публикаций сотрудника
-     */
+    */
     @ManyToMany
     @JoinColumn()
-    List<Publication> publication;
+    List<Publication> publications;
 }
 

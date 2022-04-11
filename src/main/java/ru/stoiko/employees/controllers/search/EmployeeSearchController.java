@@ -6,11 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.view.RedirectView;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.model.EmployeeModel;
 import ru.stoiko.employees.services.search.EmployeeSearchService;
+import ru.stoiko.employees.services.search.PublicationSearchService;
 
 import java.util.List;
 
@@ -21,6 +20,8 @@ public class EmployeeSearchController {
 
     @Autowired
     EmployeeSearchService employeeSearchService;
+    @Autowired
+    PublicationSearchService publicationSearchService;
 
     @GetMapping("/employee")
     public  String getAll(Model model)
@@ -30,6 +31,7 @@ public class EmployeeSearchController {
         model.addAttribute("employeeList", employeeList);
         model.addAttribute("employeeForm", new EmployeeForm());
         model.addAttribute("employee", new EmployeeModel());
+        model.addAttribute("publicationsAllList", publicationSearchService.findAll());
         log.info("[GET - /employees] \t EmployeeSearchController.getAll() executed");
         return "employee";
     }

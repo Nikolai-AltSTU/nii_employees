@@ -3,6 +3,8 @@ package ru.stoiko.employees.model;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Builder
 @Getter
 @AllArgsConstructor
@@ -46,5 +48,7 @@ public class EmployeeModel {
      * Фотография сотрудника
      */
     private String photoPath;
+
+    private List<PublicationModel> publicationModelList;
 
 }

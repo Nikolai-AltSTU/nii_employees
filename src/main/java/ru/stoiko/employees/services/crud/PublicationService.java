@@ -40,7 +40,7 @@ public class PublicationService {
             Publication publication = publicationOptional.get();
             publication.setTitle(publication1.getTitle());
             publication.setTheAbstract(publication1.getTheAbstract());
-            publication.setEmployees(publication1.getEmployees());
+            //publication.setEmployees(publication1.getEmployees());
             publicationRepository.save(publication);
             return publication;
         }

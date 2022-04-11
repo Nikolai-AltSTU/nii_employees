@@ -36,7 +36,6 @@ public class EmployeeMapper {
             Path path = Paths.get(currentPath.toAbsolutePath().toString(), folder,  filename);
             log.info("Absolute path " + path.toAbsolutePath().toString());
 
-            //String pathToFile = (path.toAbsolutePath().toString() + folder + filename);
             try {
                 File photo = new File(String.valueOf(path));
                 photo.setWritable(true);
@@ -59,6 +58,7 @@ public class EmployeeMapper {
                 .interests(employee.getInterests())
                 .positionName(employee.getPositionName())
                 .photoPath(employee.getPhotoPath())
+                .publicationModelList(PublicationMapper.entitiesToModels(employee.getPublications()))
                 .build();
     }
 

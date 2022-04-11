@@ -8,8 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.stoiko.employees.form.EmployeeForm;
 import ru.stoiko.employees.services.crud.EmployeeService;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 @Controller
@@ -76,6 +74,5 @@ public class EmployeeController {
         log.info("[POST - /employee_update/{id}]\tExit updateEmployee method");
         return "redirect:/employee";
     }
-
 
 }

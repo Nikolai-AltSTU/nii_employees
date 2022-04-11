@@ -19,12 +19,24 @@ public class PublicationMapper {
                 .id(publication.getId())
                 .title(publication.getTitle())
                 .theAbstract(publication.getTheAbstract())
-                .employees(EmployeeMapper.entitiesToModels(publication.getEmployees()))
+                //.employees(EmployeeMapper.entitiesToModels(publication.getEmployees()))
+                .build();
+    }
+
+    public static PublicationModel entityToModelWithOutEmployees(Publication publication) {
+        return PublicationModel.builder()
+                .id(publication.getId())
+                .title(publication.getTitle())
+                .theAbstract(publication.getTheAbstract())
                 .build();
     }
 
     public static List<PublicationModel> entitiesToModels(List<Publication> publications) {
         return publications.stream().map(PublicationMapper::entityToModel).collect(Collectors.toList());
+    }
+
+    public static List<PublicationModel> entitiesToModelsWithOutEmployees(List<Publication> publications) {
+        return publications.stream().map(PublicationMapper::entityToModelWithOutEmployees).collect(Collectors.toList());
     }
 
     /**

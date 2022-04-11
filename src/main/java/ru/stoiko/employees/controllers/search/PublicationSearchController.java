@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.stoiko.employees.form.PublicationForm;
 import ru.stoiko.employees.model.PublicationModel;
+import ru.stoiko.employees.services.search.EmployeeSearchService;
 import ru.stoiko.employees.services.search.PublicationSearchService;
 
 import java.util.List;
@@ -24,6 +25,8 @@ public class PublicationSearchController {
 
     @Autowired
     PublicationSearchService publicationSearchService;
+    @Autowired
+    EmployeeSearchService employeeSearchService;
 
     @GetMapping("/publications")
     public  String getAll(Model model)
@@ -33,6 +36,7 @@ public class PublicationSearchController {
         model.addAttribute("publicationList", publicationModelList);
         model.addAttribute("publicationForm", new PublicationForm());
         model.addAttribute("publication", new PublicationModel());
+        model.addAttribute("allListOfEmployees", employeeSearchService.findAll());
         log.info("[GET - /publications] \t PublicationSearchController.getAll() executed");
         return "publication";
     }

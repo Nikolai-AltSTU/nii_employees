@@ -61,6 +61,28 @@
                             type="text" th:field="*{theAbstract}"></textarea>
                 </div>
 
+                <!--option th:each="employee : ${T(ru.stoiko.employees.form.PublicationForm).getEmployees()}"-->
+                <div class=" mb-3 mt-2">
+                <!--label for="employee" > Авторы </label>
+                  <select class="form-control selectpicker" th:field="*{employees}" id="employee">
+                    <option value="">Авторы не выбраны</option>
+                    <option th:each="employee: ${T(ru.stoiko.employees.form.EmployeeForm)}"
+                            th:value="${employee}"
+                            th:text="${employee}"></option>
+                  </select>
+                  -->
+                  <!--p>
+                    <label>Авторы:
+                      <input type="checkbox" name="allListOfEmployees" id="allListOfEmployees"
+                             th:each="employee : ${allListOfEmployees}"
+                             th:text="${employee.surname + ' ' + employee.name + '   '}"
+                             th:value="${employee.id}"
+                             th:field="*{employees}"
+                      />
+                    </label>
+                  </p-->
+                </div>
+
                 <div class="row p-3">
                   <button type="submit" id="saveButton" class="btn btn-primary col-md-4">Сохранить</button>
                   <div class="col-md-2"></div>

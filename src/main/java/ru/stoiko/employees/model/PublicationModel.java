@@ -13,5 +13,5 @@ public class PublicationModel {
     private Long id;
     private String title;
     private String theAbstract;
-    private List<EmployeeModel> employees;
+    //private List<EmployeeModel> employees;
 }

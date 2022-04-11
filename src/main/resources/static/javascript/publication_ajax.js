@@ -25,6 +25,8 @@ function openCrud(object, ...attributes)
             console.log("$editPublication entered");
             e.preventDefault();
             let formData = new FormData(this);
+            //console.log($("#employees").value);
+            //formData.set("employees", $("#employees").value)
             console.log(formData);
 
             $.ajax({
